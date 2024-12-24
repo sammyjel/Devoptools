@@ -1,6 +1,6 @@
 ###########################################################################
 # Script: jenkins.sh 
-# Purpose: Install jenkins on debian based linux systems
+# Purpose: Install jenkins on ubuntu/debian
 # Steps: 
   # 1. Update package list and upgrade all installed packages to the latest versions
   # 2. Install OpenJDK 17 runtime environment (JRE)
@@ -19,4 +19,4 @@ sudo apt install jenkins -y
 
 
 # installation on docker : 
-# docker run --name my-jenkins  -p 8080:8080 -p 50000:50000 -v C:/docker-volume:/var/jenkins_home jenkins/jenkins 
+# docker run --name my-jenkins  -p 8080:8080 -p 50000:50000 -v /test:/var/jenkins_home jenkins/jenkins

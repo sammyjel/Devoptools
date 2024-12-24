@@ -18,5 +18,5 @@ sudo apt update -y
 sudo apt install jenkins -y
 
 
-# instllaton on docker : 
-# docker run --name my-jenkins  -p 8181:8080 -p 50000:50000 -v C:/docker-volume:/var/jenkins_home jenkins/jenkins 
+# installation on docker : 
+# docker run --name my-jenkins  -p 8080:8080 -p 50000:50000 -v C:/docker-volume:/var/jenkins_home jenkins/jenkins 

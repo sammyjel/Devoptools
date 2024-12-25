@@ -1,13 +1,14 @@
-###########################################################################
+###########################################################
 # Script: jenkins.sh 
 # Purpose: Install jenkins on ubuntu/debian
 # Steps: 
-  # 1. Update package list and upgrade all installed packages to the latest versions
+  # 1. Update package list and upgrade
   # 2. Install OpenJDK 17 runtime environment (JRE)
   # 3. Add Jenkins key and repository
   # 4. Update package list to include Jenkins repository
   # 5. Install Jenkins
-###########################################################################
+##########################################################
+
 #!/bin/bash
 
 sudo apt update -y && sudo apt upgrade -y

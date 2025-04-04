@@ -1,0 +1,59 @@
+
+# AWS EC2 (Ubuntu) Installation Script for Prometheus & Grafana
+
+## Step-by-Step Commands:
+
+1. **Update system packages:**
+   ```bash
+   sudo apt update -y
+   ```
+
+2. **Install required dependencies:**
+   ```bash
+   sudo apt install -y curl wget git unzip
+   ```
+
+3. **Install Helm (if not already installed):**
+   - Check if Helm is installed:
+     ```bash
+     command -v helm
+     ```
+   - If Helm is not installed, install it:
+     ```bash
+     curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+     ```
+
+4. **Add Prometheus Helm repository:**
+   ```bash
+   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   helm repo update
+   ```
+
+5. **Install Prometheus & Grafana using Helm:**
+   ```bash
+   helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
+   ```
+
+6. **Wait for pods to start:**
+   ```bash
+   sleep 30
+   ```
+
+7. **Verify the installation:**
+   ```bash
+   kubectl get svc -n monitoring
+   ```
+
+8. **Expose Prometheus & Grafana:**
+   ```bash
+   kubectl port-forward svc/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090 &
+   kubectl port-forward svc/prometheus-grafana -n monitoring 3000:80 &
+   ```
+
+## Access URLs:
+
+- **Prometheus UI**: http://<EC2-PUBLIC-IP>:9090
+- **Grafana UI**: http://<EC2-PUBLIC-IP>:3000
+   - **Default Login**:  
+     - Username: admin  
+     - Password: prom-operator
